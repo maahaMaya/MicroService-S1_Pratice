@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.sourav.domain.Product;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
 
 @FeignClient(name = "product-service")
 public interface ProductServiceProxy {
 	
+	@Retry(name = "product-service")
 	@CircuitBreaker(name = "product-service", fallbackMethod = "fallbackMethodGetAllProduct")
 	@GetMapping(value = "/product", produces = {MediaType.APPLICATION_JSON_VALUE})
 	public List<Product> getAllProduct();
