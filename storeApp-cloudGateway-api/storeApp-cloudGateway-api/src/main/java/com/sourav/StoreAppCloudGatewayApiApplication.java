@@ -10,6 +10,7 @@ public class StoreAppCloudGatewayApiApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(StoreAppCloudGatewayApiApplication.class, args);
+		System.out.println("Server Started....");
 	}
 
 }
